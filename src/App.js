@@ -1,17 +1,20 @@
-import logo from './logo.svg';
+import Footer from './components/FooterBlock';
+import Header from './components/HeaderBlock';
+import Layout from './components/LayoutBlock/index.js';
+
 import './App.css';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-        HelloWorld
-        </p>
-      </header>
-    </div>
-  );
+    <>
+    <Header />
+    <Layout />
+    <Layout />
+    <Layout />
+    <Footer />
+    </>
+    );
 }
 
 export default App;
