@@ -1,4 +1,4 @@
-import f from './style.module.css';
+import h from '/Users/aleksandr/Desktop/Pock game/poc-game/Pok-game/src/components/HeaderBlock/style.module.css';
 
 const Header = () => {
   return (
