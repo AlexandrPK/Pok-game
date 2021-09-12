@@ -1,15 +1,15 @@
-import f from './style.module.css';
+import hed from './style.module.css'
 
-const Header = () => {
+const Header = ({title, descr}) => {
   return (
     <>
-      <header class="root">
-        <div class="forest"></div>
-        <div class="container">
-        <h1>This is title</h1>
-        <p>This is Description!</p>
-         </div>
-      </header>
+      <header className = {hed.root}>
+        <div className = {hed.forest}></div>
+        <div className = {hed.container}>
+            <h1>{title}</h1>
+            <p>{descr}</p>
+        </div>
+    </header>
     </>
     );
 }
