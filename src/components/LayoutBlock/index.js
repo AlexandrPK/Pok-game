@@ -1,27 +1,21 @@
-import l from './style.module.css'
+import s from './style.module.css';
 
-
-const Layout = ({title, descr, urlBg, colorBg, children,}) => {
-
-  const bgR = {
-    backgroundImage: urlBg ? `url("${urlBg}")` : null,
-    backgroundColor: `${colorBg}`,
-  };
-  
-  return (
-    <>
-       <section className={l.root} style={bgR}>
-        <div className={l.wrapper}>
-          <article>
-            <div className={l.title}>
-            <h3>{title}</h3>
-            <span className={l.separator}></span>
-            </div>
-            <div className={`${l.desc} ${l.full}`}>{children}</div>
-          </article>
-        </div>
-        </section>
-    </>
+const Layout = ({title, titleColor, urlBg, colorBg, children}) => {
+    const bg = urlBg ? {backgroundImage: `url(${urlBg})`} : {background: `${colorBg}`};
+    return (        
+            <section className={s.root} style={bg}>
+                <div className={s.wrapper}>
+                    <article>
+                        <div className={s.title}>
+                            <h3 style={{color: `${titleColor}`}}>{title}</h3>
+                            <span className={s.separator}></span>
+                        </div>
+                        <div className={`${s.desc} ${s.full}`}>
+                            {children}
+                        </div>
+                    </article>
+                </div>
+            </section>
     );
 }
 
