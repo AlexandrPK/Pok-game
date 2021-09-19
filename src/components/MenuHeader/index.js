@@ -1,28 +1,31 @@
+import Menu from "../../components/Menu";
+import NavBar from "../../components/NavBar";
 import { useState } from "react";
-import Menu from "./Menu";
-import NavBar from "./NavBar";
 
+const MenuHeader = ({bgActive = false}) => {
 
+    const [navStatus, setNavStatus] = useState(null);
 
-const MenuHeader = ({onChangePage}) => {
-    const [menuActive, setMenuActive] = useState(false);
-    const toogleMenu = () => {
-        setMenuActive(!menuActive)
+    const changeNavStatus = () => {
+        setNavStatus(prevState => !prevState);
     }
-
-    const handleChangePage = (page) => {
-        if(typeof onChangePage === "function") onChangePage(page)
-        setMenuActive(false)
+    const navClick = () => {
+        setNavStatus(null);
     }
 
     return (
         <>
-            {menuActive && <Menu onChangePage={handleChangePage} />}
-            <NavBar onToogleMenu={toogleMenu} menuActive={menuActive} />
+            <Menu
+                navStatus={navStatus}
+                navClick={navClick}
+            />
+            <NavBar
+                navStatus={navStatus}
+                changeNavStatus={changeNavStatus}
+                bgActive={bgActive}
+            />
         </>
     )
-
-
-};
+}
 
 export default MenuHeader;

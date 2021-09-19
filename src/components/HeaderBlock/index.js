@@ -1,20 +1,19 @@
-import s from "./style.module.css";
+import header from './style.module.css';
 
-const Header = ({title,descr,onClickButton}) => {
-    const handleClick = () => {
-        if(typeof onClickButton === "function" ) onClickButton('game');
-    }
 
+const Header = ({ title = "", descr = "" }) => {
     return (
-        <header className={s.root}>
-            <div className={s.forest}></div>
-            <div className={s.container}>
+        <header id="welcome" className={header.root} >
+            <div className={header.forest}></div>
+            <div className={header.silhouette}></div>
+            <div className={header.moon}></div>
+            <div className={header.container}>
                 <h1>{title}</h1>
                 <p>{descr}</p>
-                <button onClick={handleClick}>Начать игру</button>
             </div>
         </header>
-    );
+    )
 }
+
 
 export default Header;

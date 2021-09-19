@@ -1,29 +1,46 @@
-import s from "./style.module.css"
+import PokemonCard from "../../components/PokemonCard";
+import { useState } from "react";
 
-import MenuHeader from '../../components/MenuHeader/index.js';
-import Layout from '../../components/LayoutBlock/index.js';
-import Footer from '../../components/FooterBlock/index.js';
-import PokemonCard from '../../components/PokemonCard/index.js';
+import POKEDATA from "../../data.json"
+import game from "./style.module.css"
 
-import POKEMONS from '../../pokemon.json';
+let POKE_LIST = POKEDATA.map(poke => {
+    Object.assign(poke, {active: false})
+    return poke;
+})
 
-const GamePage = ({onChangePage}) => {
-    const handleChangePage = (page) => {
-        if(typeof onChangePage === "function") onChangePage(page);
+const GamePage = () => {
+
+    const [Pokemons, setPokemons] = useState(POKE_LIST);
+
+    const cardClick = (pokeId) => {
+        POKE_LIST = POKE_LIST.map(poke => {
+            if(poke.id === pokeId) {
+                poke['active'] = !poke.active 
+            }
+            return poke;
+        })
+        setPokemons(POKE_LIST);
     }
+
     return (
         <>
-            <MenuHeader onChangePage={handleChangePage} />
-
-            <Layout title="Cards" titleColor="#FEFEFE" colorBg="#202736">
-                <div id="cards" className={s.flex}>
-                    {POKEMONS.map(item => <PokemonCard id={item.id} name={item.name} type={item.type} img={item.img} values={item.values} key={item.id} />)}
-                </div>
-            </Layout>
-            <Footer />
+            <div className={game.flex}>
+                {
+                    Pokemons.map(el => <PokemonCard
+                        id = { el.id }
+                        name = { el.name }
+                        type = { el.type }
+                        img = { el.img }
+                        values = { el.values }
+                        key = { el.id }
+                        isActive = { el.active }
+                        cardClick = { cardClick }
+                    />)
+                }
+            </div>
         </>
     )
-
 }
 
 export default GamePage;
