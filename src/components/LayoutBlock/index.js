@@ -1,28 +1,27 @@
-import l from './style.module.css'
+import cl from "classnames";
 
+import layout from "./style.module.css";
 
-const Layout = ({title, descr, urlBg, colorBg, children,}) => {
-
-  const bgR = {
-    backgroundImage: urlBg ? `url("${urlBg}")` : null,
-    backgroundColor: `${colorBg}`,
-  };
-  
-  return (
-    <>
-       <section className={l.root} style={bgR}>
-        <div className={l.wrapper}>
-          <article>
-            <div className={l.title}>
-            <h3>{title}</h3>
-            <span className={l.separator}></span>
+const Layout = ({id=null, title, descr, urlBg = false, colorBg = "none", children}) => {
+    let bg = {
+                backgroundImage: urlBg  ? `url(${ urlBg })` : "none",
+                backgroundColor: colorBg,
+            }
+    return (
+        <section id={id} className={layout.root} style={bg}>
+            <div className={layout.wrapper}>
+                <article>
+                    <div className={layout.title}>
+                        <h3>{title}</h3>
+                        <span className={layout.separator}></span>
+                    </div>
+                    <div className={cl(layout.desc, layout.full)}>
+                        { children ?? <p>{ descr }</p>}
+                    </div>
+                </article>
             </div>
-            <div className={`${l.desc} ${l.full}`}>{children}</div>
-          </article>
-        </div>
         </section>
-    </>
-    );
+    )
 }
 
 export default Layout;

@@ -29,7 +29,6 @@
     transform: rotateY(180deg);
 }
 
-/* TODO: This place where we should change :hover on .active */
 .pokemonCard.active {
     transform: rotateY(0deg);
 }
@@ -220,3 +219,10 @@
     transform: translate(-50%, 0);
     bottom: 0;
 }
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
