@@ -12,7 +12,7 @@ const HomePage = ({onPageChange}) =>{
   return (
     <React.Fragment>
       <Header title="Pokemon Card Game!" 
-              descr="React application"
+              descr="good game"
               onClickButton={handleClickButton}/>
       <Layout title="Rules" descr="My Layout Description 1" urlBg={BgImage}>
         <p>In the game two players face off against one another, one side playing as "blue", the other as "red" on a 3x3 grid.</p>
