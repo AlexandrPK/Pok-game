@@ -1,4 +1,5 @@
 Welcome 👋
+
 To get started with this game, clone this repo and follow these commands:
 
 1. cd into the `app` folder
